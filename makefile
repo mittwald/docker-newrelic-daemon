@@ -1,5 +1,5 @@
 SHELL := bash
-DOCKER_REPO_NAME := mittwald/newrelic-daemon
+DOCKER_REPO_NAME := quay.io/mittwald/newrelic-daemon
 DEBIAN_RELEASE := 8.11
 NEWRELIC_DAEMON_VERSION := 8.6.0.238
 
