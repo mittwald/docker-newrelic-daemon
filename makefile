@@ -13,7 +13,7 @@ dockertag:
 dockerpush:
 	docker push $(DOCKER_REPO_NAME):latest 
 	docker push $(DOCKER_REPO_NAME):$(NEWRELIC_DAEMON_VERSION)
-	docker push $(NEWRELIC_DAEMON_VERSION)-debian$(DEBIAN_RELEASE)
+	docker push $(DOCKER_REPO_NAME):$(NEWRELIC_DAEMON_VERSION)-debian$(DEBIAN_RELEASE)
 dockerrelease:
 	make dockerbuild
 	make dockertag
