@@ -1,0 +1,20 @@
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+
+env:
+  global:
+    - DOCKER_REPO_NAME="mittwald/newrelic-daemon"
+    - DEBIAN_RELEASE="8.11"
+
+script:
+  - make DOCKER_REPO_NAME="${DOCKER_REPO_NAME}" dockerbuild
+
+deploy:
+  provider: script
+  script: docker login -u "${DOCKER_LOGIN_USER}" -p "${DOCKER_LOGIN_PASSWORD}" quay.io && make DOCKER_REPO_NAME="${DOCKER_REPO_NAME}" DEBIAN_RELEASE="${DEBIAN_RELEASE}" NEWRELIC_DAEMON_VERSION="${TRAVIS_TAG}" dockerrelease
+  on:
+    tags: true
